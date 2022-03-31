@@ -1,0 +1,13 @@
+/* Styles for the views */
+
+/* Styling for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+  /* Remove text decoration from anchor tags */
+a {
+    text-decoration: none;
+}
