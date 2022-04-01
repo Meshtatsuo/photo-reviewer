@@ -1,9 +1,9 @@
 require("dotenv").config();
 
-const accessKey = process.env.S3_ACCESSKEY;
-const secretKey = process.env.S3_SECRETKEY;
-const region = process.env.S3_REGION;
-const bucket = process.env.S3_BUCKETNAME;
+const accessKey = process.env.AWS_ACCESS_KEY_ID;
+const secretKey = process.env.AWS_SECRET_ACCESS_KEY;
+const region = process.env.S3_BUCKET_REGION;
+const bucket = process.env.S3_BUCKET_NAME;
 
 var S3 = require("aws-sdk/clients/s3");
 const fs = require("fs");
@@ -15,6 +15,7 @@ const s3 = new S3({
 });
 
 function uploadFile(file) {
+  console.log("Trying to upload...");
   let fileStream = fs.createReadStream(file.path);
   // setup upload paramters S3
   const uploadParams = {
@@ -37,6 +38,6 @@ function getFile(fileKey) {
 }
 
 module.exports = {
-  uploadFile: uploadFile(),
-  getFile: getFile(),
+  uploadFile,
+  getFile
 };
