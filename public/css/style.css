@@ -11,3 +11,8 @@
 a {
   text-decoration: none;
 }
+
+/* navbar background color */
+.nav {
+  background-color: #ffffff !important;
+}
