@@ -2,12 +2,17 @@
 
 /* Styling for all elements */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-  /* Remove text decoration from anchor tags */
+/* Remove text decoration from anchor tags */
 a {
-    text-decoration: none;
+  text-decoration: none;
+}
+
+/* navbar background color */
+.nav {
+  background-color: #ffffff !important;
 }
