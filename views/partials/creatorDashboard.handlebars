@@ -1,0 +1,99 @@
+<nav class="dark blue darken-4">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">PHOTO REVIEWER</a>
+
+        <!-- Dropdown Trigger -->
+        <a class="dropdown-trigger right dark blue darken-4" href="#" data-target="dropdown1">Username</a>
+
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">Dashboard</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="#!">Upload</a></li>
+          <li class="divider" tabindex="-1"></li>
+          <li><a href="#!">Log Out</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col s1"></div>
+        <div class="col s11"><h4>Dashboard</h4></div>
+        <div class="col s9">
+
+          <button class="btn z-depth-3 right">+ Uploads</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container grey darken-4">
+      <div class="row"></div>
+      <div class="row center">
+        <div class="col s2">
+          <a href="/api/images/:filename"
+            ><img class="z-depth-3" src="./images/20160226_204911-1.jpg" alt="image" />
+            <h5>Post Tittle:</h5>
+            <h5>Client Name:</h5>
+          </a>
+        </div>
+        <div class="col s2">
+          <a href="/api/images/:filename"
+            ><img class="z-depth-3" src="./images/20160226_204911-1.jpg" alt="image" / >
+            <h5>Post Tittle:</h5>
+            <h5>Client Name:</h5>
+          </a>
+        </div>
+        <div class="col s2">
+          <a href="/api/images/:filename"
+            ><img class="z-depth-3" src="./images/20160226_204911-1.jpg" alt="image" / >
+            <h5>Post Tittle:</h5>
+            <h5>Client Name:</h5>
+          </a>
+        </div>
+        <div class="col s2">
+          <a href="/api/images/:filename"
+            ><img class="z-depth-3" src="./images/20160226_204911-1.jpg" alt="image" / >
+            <h5>Post Tittle:</h5>
+            <h5>Client Name:</h5>
+          </a>
+        </div>
+        <div class="col s2">
+          <a href="/api/images/:filename"
+            ><img class="z-depth-3" src="./images/20160226_204911-1.jpg" alt="image" / >
+            <h5>Post Tittle:</h5>
+            <h5>Client Name:</h5>
+          </a>
+        </div>
+        <div class="col s2">
+          <a href="/api/images/:filename"
+            ><img class="z-depth-3" src="./images/20160226_204911-1.jpg" alt="image" / >
+            <h5>Post Tittle:</h5>
+            <h5>Client Name:</h5>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s4"></div>
+        <form class="col s3 signup-form">
+          <div>
+            <h4>+ Add New Client</h4>
+          </div>
+          <div class="input-field">
+            <label for="username-signup">username:</label>
+            <input type="text" id="username-signup" />
+          </div>
+          <div class="input-field">
+            <label for="email-signup">email:</label>
+            <input type="text" id="email-signup" />
+          </div>
+          <div class="input-field">
+            <label for="password-signup">password:</label>
+            <input type="password" id="password-signup" />
+          </div>
+          <div >
+            <button id="signupBtn" class="col s6 right z-depth-3 waves-effect waves-light btn dark blue darken-4 type="submit">signup</button>
+          </div>
+        </form>
+    </div>
