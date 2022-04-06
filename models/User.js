@@ -23,6 +23,19 @@ User.init({
         unique: true,
         validate: {
             isEmail: true
+        },
+    },
+    isCreator: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        default: false
+    },
+    creator_id: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        references: {
+            model: 'user',
+            key: 'id'
         }
     },
     password: {
