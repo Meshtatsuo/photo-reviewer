@@ -7,6 +7,17 @@
   box-sizing: border-box;
 }
 
+/* Sticky Footer */
+html,
+body {
+  height: 100%;
+}
+
+body > footer {
+  position: sticky;
+  top: 100vh;
+}
+
 /* Remove text decoration from anchor tags */
 a {
   text-decoration: none;
@@ -15,4 +26,10 @@ a {
 /* navbar background color */
 .nav {
   background-color: #ffffff !important;
+}
+
+/* scalable images */
+img {
+  width: 100%;
+  height: auto;
 }

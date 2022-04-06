@@ -1,13 +1,13 @@
-// testing login button
-document.getElementById('loginBtn').addEventListener('click', displayDate);
-function displayDate() {
-  console.log(new Date());
-}
-// testing signup button
-document.getElementById('signupBtn').addEventListener('click', displayDate);
-function displayDate() {
-  console.log(new Date());
-}
+// // testing login button
+// document.querySelector('#loginBtn').addEventListener('click', displayDate);
+// function displayDate() {
+//   console.log(new Date());
+// }
+// // testing signup button
+// document.querySelector('#signupBtn').addEventListener('click', displayDate);
+// function displayDate() {
+//   console.log(new Date());
+// }
 
 async function loginFormHandler(event) {
   event.preventDefault();
