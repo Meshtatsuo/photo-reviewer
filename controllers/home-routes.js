@@ -12,7 +12,47 @@ router.get('/', (req, res) => {
     if (!req.session) {
         res.render('login');
     } else {
-        res.redirect('/dashboard');
+        // TODO IF TIME: Refactor
+        if (req.session.isCreator) {
+            Post.findAll({
+                    where: {
+                        user_id: req.session.id
+                    },
+                    attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
+                })
+                .then((dbPostData => {
+                    const posts = dbPostData.map(post => post.get({
+                        plain: true
+                    }))
+                    res.render('dashboard', {
+                        posts,
+                        loggeddIn: req.session.loggedIn,
+                        username: req.session.username,
+                        isCreator: req.session.isCreator
+                    })
+                }));
+
+        } else if (!req.session.isCreator) {
+            Post.findAll({
+                    where: {
+                        client_id: req.session.id
+                    },
+                    attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
+                })
+                .then((dbPostData => {
+                    const posts = dbPostData.map(post => post.get({
+                        plain: true
+                    }))
+                    res.render('dashboard', {
+                        posts,
+                        loggeddIn: req.session.loggedIn,
+                        username: req.session.username,
+                        isCreator: req.session.isCreator
+                    })
+                }));
+        } else {
+            res.render('login');
+        }
     }
 })
 
@@ -69,6 +109,34 @@ router.get('/dashboard', (req, res) => {
             }));
     } else {
         res.render('login');
+    }
+})
+
+router.get('/upload', (req, res) => {
+    // get all users belonging to the client
+    // pass users along to handlebars to create dropdown
+    // render login page
+    if (req.session) {
+        User.findAll({
+                where: {
+                    creator_id: req.session.id
+                },
+                attributes: {
+                    exclude: ['password']
+                }
+            })
+            .then((dbClientData => {
+                const clients = dbClientData.map(clients => user.get({
+                    plain: true
+                }))
+                res.render('upload', {
+                    clients,
+                    loggedIn: req.session.loggedIn,
+                    isCreator: req.session.isCreator
+                })
+            }))
+    } else {
+        res.render('/login');
     }
 })
 
