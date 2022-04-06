@@ -14,8 +14,6 @@
     <!-- MATERIALIZE - Compiled and minified JavaScript -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
 
-    {{! Bring in stylesheet }}
-    <link rel='stylesheet' href='/css/style.css' />
   </head>
 
   <body>
@@ -27,6 +25,19 @@
     {{#if loggedIn}}
       <script src='/js/logout.js'></script>
     {{/if}}
+
+    <footer class='dark blue darken-4'>
+      <div class='row'>
+        <div class='col s12'>
+          <h5 class='white-text'>Footer Content</h5>
+        </div>
+      </div>
+    </footer>
+
   </body>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js'></script>
+  <script src='./javascript/get-images.js'></script>
+  <script src='./javascript/dropdown.js'></script>
 
 </html>
