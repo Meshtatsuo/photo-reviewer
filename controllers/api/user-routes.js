@@ -72,7 +72,7 @@ router.post('/', (req, res) => {
             password: req.body.password
         })
         .then(dbUserData => {
-            res.render('/login');
+            res.render('login');
         })
         .catch(err => {
             console.log(err);

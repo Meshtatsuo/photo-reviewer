@@ -21,7 +21,13 @@ async function handleSubmit(e) {
     data.append('title', title)
     data.append('client_id', client_id)
 
-    await axios.post('/api/posts/', data);
+    const success = await axios.post('/api/posts/', data);
+
+    if (success) {
+        document.location.replace('/');
+    } else {
+        console.log("No");
+    }
 }
 
 
