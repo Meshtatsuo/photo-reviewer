@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- css file -->
+  <link rel='stylesheet' href='/public/css/style.css' />
+
+  <!-- MATERIALIZE - Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+  <!-- MATERIALIZE - Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <title>Document</title>
+</head>
+
+<body>
+
+  <main>
+
+    <nav class="dark blue darken-4">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">PHOTO REVIEWER</a>
+      <div/>
+    </nav>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col s4"></div>
+        <h2>Uploader</h2>
+        <div class="col s4"></div>
+        <button class="col s4 z-depth-3 dark blue darken-4 btn">
+          <a class="white-text" href="viewUploads.html">View Uploads</a>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="col s4"></div>
+        <div class="input-field col s4">
+          <div class="row">
+            <label for="Client">Choose a client:</label>
+            <!-- add inline style to override default materialize display:none -->
+            <select name="client" id="client" style="display: block">
+              <option value="client_1">client_1</option>
+              <option value="client_2">client_2</option>
+              <option value="client_3">client_3</option>
+              <option value="client_4">client_4</option>
+            </select>
+          </div>
+
+          <form id="uploadImage">
+
+            <div class="input-field">
+              <input class="col s6 right z-depth-3 waves-effect dark blue darken-4 btn" id="image-file" filename='image'
+                type="file" accept="image/*"></input>
+              <input placeholder="Alt Text" type="text" id="alt_text" name="altText">
+            </div>
+
+            <div>
+              <!-- <label for="altText">Alt Text:</label> -->
+              <input placeholder="Description" type="text" id="description" name="description">
+              <input class="col s6 right z-depth-3 dark blue darken-4 btn" type="submit">
+              <!-- <label for="description">Description: </label> -->
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class='dark blue darken-4'>
+      <div class='row'>
+        <div class='col s12'>
+          <h5 class='white-text'>Footer Content</h5>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+<script src="./javascript/upload-file.js"></script>
+
+</html>
