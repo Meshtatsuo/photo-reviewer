@@ -1,29 +1,42 @@
 <div class="row">
-      <h2>Test Uploader</h2>
-      <button class="col s3 z-depth-3 waves-effect waves-light btn">
-        <a class="white-text" href="viewUploads.html">View Uploads</a>
-      </button>
+  <h2>Uploader</h2>
+  <button class="col s3 z-depth-3 dark blue darken-4 btn">
+    <a class="white-text" href="viewUploads.html">View Uploads</a>
+  </button>
+</div>
+
+<div class="row">
+  <div class="input-field col s3">
+
+    <div class="row">
+      <label for="Client">Choose a client:</label>
+      <!-- add inline style to override default materialize display:none -->
+      <select name="client" id="client" style="display: block">
+        <option value="client_1">client_1</option>
+        <option value="client_2">client_2</option>
+        <option value="client_3">client_3</option>
+        <option value="client_4">client_4</option>
+      </select>
     </div>
-    
 
-    <main>
-      <div class="row">
-        <div class="input-field col s3">
-          <form id="uploadImage">
+    <form id="uploadImage">
 
-            <div class="input-field">
-              <input class="col s12 z-depth-3 waves-effect waves-light btn" id="image-file" filename='image' type="file" accept="image/*"></input>
-              <input placeholder="Alt Text" type="text" id="alt_text" name="altText">
-            </div>
-            
-            <!-- <label for="altText">Alt Text:</label> -->
-            <input placeholder="Description" type="text" id="description" name="description">
-            <input class="col s12 z-depth-3 waves-effect waves-light btn" type="submit">
-            <!-- <label for="description">Description: </label> -->
-
-          </form>
-        </div>
+      <div class="input-field">
+        <input class="col s6 right z-depth-3 waves-effect dark blue darken-4 btn" id="image-file" filename='image'
+          type="file" accept="image/*"></input>
+        <input placeholder="Alt Text" type="text" id="alt_text" name="altText">
       </div>
+
+      <div>
+        <!-- <label for="altText">Alt Text:</label> -->
+        <input placeholder="Description" type="text" id="description" name="description">
+        <input class="col s6 right z-depth-3 dark blue darken-4 btn" type="submit">
+        <!-- <label for="description">Description: </label> -->
+      </div>
+
+    </form>
+  </div>
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
 <script src="/public/javascript/upload-file.js"></script>
