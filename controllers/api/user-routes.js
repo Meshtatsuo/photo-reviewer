@@ -22,12 +22,6 @@ User.findOne ({
     where: {
         id: req.params.id
     },
-    include: [
-        {
-            model: Post,
-            attributes: ['id', 'username', 'email']
-        }
-    ]
 })
 .then(dbUserData => {
     if (!dbUserData) {
@@ -46,16 +40,19 @@ router.post('/', (req,res) => {
 User.create({
     username: req.body.username,
     email: req.body.email,
+    isCreator: req.body.isCreator,
+    creatorId: req.body.creatorId,
     password: req.body.password
 })
 .then(dbUserData => {
-    req.session.save(() => {
-        req.session.user_id = dbUserData.id;
-        req.session.username = dbUserData.username;
-        req.sesssion.loggedIn = true;
+    res.render(login);
+    // req.session.save(() => {
+    //     req.session.user_id = dbUserData.id;
+    //     req.session.username = dbUserData.username;
+    //     req.sesssion.loggedIn = true;
 
-        res.json(dbUserData);
-    });
+    //     res.json(dbUserData);
+    // });
 })
 .catch(err => {
     console.log(err);

@@ -13,16 +13,19 @@ router.get('/', (req,res) => {
       res.status(500).json(err);
   });
 });
-
 router.get('/:id', (req,res) => {
-//routes gets single comment found by id
-Comment.findOne()
-.then(dbCommentData => res.json(dbCommentData))
-.catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-});
-});
+    //route gets single comment found by id
+    Comment.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+  });
 
 router.post('/', (req,res) => {
 // route create and post comment
