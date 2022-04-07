@@ -1,0 +1,63 @@
+<main>
+    <div class="container">
+        <h4>{{post.title}}</h4>
+        <div class="row">
+            <div class="col s12 m6">
+                <!--Photo Section-->
+                <img class="responsive-img" src="{{post.image_key}}" alt="{{post.alt_text}}" />
+            </div>
+            <!-- Photo info and comments -->
+            <div class="row valign-wrapper">
+                <h6>Posted by: {{post.user.username}}</h6>
+            </div>
+            <div class="col s6 valign-wrapper">
+                {{#if post.isApproved}}
+                <a class="btn-flat disabled green-text">Approved! ✔</a>
+                {{else}}
+                {{#if user.isCreator}}
+                <p>Awaiting approval...</p>
+                {{else}}
+                <button id="button-approval" class="btn waves-effect waves-light">Approve ✔</button>
+                {{/if}}
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <p>{{post.description}}</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!--COMMENT FORM-->
+        <div class="row">
+            <form class="comment-form col s12">
+                <div class="input-field">
+                    <textarea id="comment-content" class="materialize-textarea"></textarea>
+                    <label for="post-content"></label>
+                </div>
+                <div class="col s12 left-align">
+                    <button id="submit-comment" class=" btn  waves-effect waves-light"
+                        type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <!-- Comments -->
+                <ol class="comment-list">
+                    {{#each post.comments as |comment|}}
+                        {{> comment comment}}
+                    {{/each}}
+                </ol>
+            </div>
+        </div>
+        
+    </div>    
+</main>
+
+<script src="/js/comment.js"></script>
+<script src="/js/approvePhoto.js"></script>

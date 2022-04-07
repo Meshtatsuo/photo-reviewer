@@ -8,51 +8,10 @@ const {
 } = require('../models');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/testUpload.html'));
-    if (!req.session) {
+    if (!req.session.loggedIn) {
         res.render('login');
     } else {
-        // TODO IF TIME: Refactor
-        if (req.session.isCreator) {
-            Post.findAll({
-                    where: {
-                        user_id: req.session.id
-                    },
-                    attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
-                })
-                .then((dbPostData => {
-                    const posts = dbPostData.map(post => post.get({
-                        plain: true
-                    }))
-                    res.render('dashboard', {
-                        posts,
-                        loggeddIn: req.session.loggedIn,
-                        username: req.session.username,
-                        isCreator: req.session.isCreator
-                    })
-                }));
-
-        } else if (!req.session.isCreator) {
-            Post.findAll({
-                    where: {
-                        client_id: req.session.id
-                    },
-                    attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
-                })
-                .then((dbPostData => {
-                    const posts = dbPostData.map(post => post.get({
-                        plain: true
-                    }))
-                    res.render('dashboard', {
-                        posts,
-                        loggeddIn: req.session.loggedIn,
-                        username: req.session.username,
-                        isCreator: req.session.isCreator
-                    })
-                }));
-        } else {
-            res.render('login');
-        }
+        res.redirect('/dashboard');
     }
 })
 
@@ -73,11 +32,16 @@ router.get('/dashboard', (req, res) => {
     if (req.session.isCreator) {
         Post.findAll({
                 where: {
-                    user_id: req.session.id
+                    user_id: req.session.user_id
                 },
-                attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
+                attributes: ['id', 'title', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id'],
+                include: [{
+                    model: User,
+                    attributes: ['username']
+                }]
             })
             .then((dbPostData => {
+                console.log(dbPostData);
                 const posts = dbPostData.map(post => post.get({
                     plain: true
                 }))
@@ -92,11 +56,17 @@ router.get('/dashboard', (req, res) => {
     } else if (!req.session.isCreator) {
         Post.findAll({
                 where: {
-                    client_id: req.session.id
+                    client_id: req.session.user_id
                 },
-                attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
+                attributes: ['id', 'title', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id'],
+                include: [{
+                    model: User,
+                    attributes: ['username']
+                }]
+
             })
             .then((dbPostData => {
+                console.log(dbPostData);
                 const posts = dbPostData.map(post => post.get({
                     plain: true
                 }))
@@ -119,14 +89,14 @@ router.get('/upload', (req, res) => {
     if (req.session) {
         User.findAll({
                 where: {
-                    creator_id: req.session.id
+                    creator_id: req.session.user_id
                 },
                 attributes: {
                     exclude: ['password']
                 }
             })
             .then((dbClientData => {
-                const clients = dbClientData.map(clients => user.get({
+                const clients = dbClientData.map(user => user.get({
                     plain: true
                 }))
                 res.render('upload', {

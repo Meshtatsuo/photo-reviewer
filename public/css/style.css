@@ -7,6 +7,39 @@
   box-sizing: border-box;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.comment-card {
+  margin: 2%;
+}
+
+.btn-margin {
+  margin: 2%;
+}
+
+select {
+  display: block;
+}
+
+img {
+  padding: 1%;
+}
+
+.thumbnail {
+  max-height: 250px;
+  object-fit: none;
+
+
+}
+
 /* Remove text decoration from anchor tags */
 a {
   text-decoration: none;
@@ -15,4 +48,15 @@ a {
 /* navbar background color */
 .nav {
   background-color: #ffffff !important;
+}
+
+/* scalable images */
+img {
+  width: 100%;
+  height: auto;
+}
+
+/* font for post tittle and client name */
+h5 {
+  font-size: 1vw;
 }

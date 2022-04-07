@@ -5,25 +5,53 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <title>Photo Reviewer</title>
 
+
+
     <!-- MATERIALIZE - Compiled and minified CSS -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' />
 
     <!-- MATERIALIZE - Compiled and minified JavaScript -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js'></script>
 
-    {{! Bring in stylesheet }}
+    <!-- css file -->
     <link rel='stylesheet' href='/css/style.css' />
   </head>
 
   <body>
-    <div class='wrapper'>
-      {{{body}}}
-    </div>
+<nav class='dark blue darken-4'>
+  <div class='nav-wrapper container'>
+    <a href='/' class='brand-logo'>PHOTO REVIEWER</a>
 
-    {{! JS related to logging out is only required if the user is logged in }}
-    {{#if loggedIn}}
-      <script src='/js/logout.js'></script>
-    {{/if}}
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-trigger right dark blue darken-4' href='#' data-target='dropdown1'>{{username}}</a>
+
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+      <!-- <li><a href="#!">two</a></li> -->
+      <li class='divider' tabindex='-1'></li>
+      <li><a href='#' class="logout-btn">Log Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class='wrapper'>
+ {{{body}}}
+</div>
+
+
+  <script src='/js/logout.js'></script>
+
+
+<footer class='dark blue darken-4'>
+  <div class='row'>
+    <div class='col s12'>
+      <h5 class='white-text'>Footer Content</h5>
+    </div>
+  </div>
+</footer>
+
   </body>
+
+ <script src='/js/dropdown.js'></script>
 
 </html>

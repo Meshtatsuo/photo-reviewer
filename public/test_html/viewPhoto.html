@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- css file -->
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <!-- MATERIALIZE - Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- MATERIALIZE - Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>PHOTO REVIEWER</title>
+</head>
+
+<body>
+    <nav class="dark blue darken-4">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">PHOTO REVIEWER</a>
+
+            <!-- Dropdown Trigger -->
+            <a class="dropdown-trigger right dark blue darken-4" href="#" data-target="dropdown1">Username</a>
+
+            <!-- Dropdown Structure -->
+            <ul id="dropdown1" class="dropdown-content">
+                <li><a href="#!">Dashboard</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a href="#!">Upload</a></li>
+                <li class="divider" tabindex="-1"></li>
+                <li><a href="#!">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            <h4>Photo Title</h4>
+            <div class="row">
+                <div class="col s12 m6">
+                    <!--photo here -->
+                    <img class="responsive-img" src="../../image-2 (1).jpg" />
+                </div>
+                <div class="col s12 m6">
+                    <!-- photo info and comments -->
+                    <div class="row valign-wrapper">
+                        <div class="col s6 valign-wrapper">
+                            <p>Posted by: [CREATOR]</p>
+                        </div>
+                        <div class="col s6 valign-wrapper">
+                            <button id="button-approval" class=" btn  waves-effect waves-light" type="submit">Approve
+                                ✔</button>
+
+                            <a class="btn-flat disabled green-text">Approved! ✔</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p>Description for the project goes here and everything should look ok if I keep typing and
+                                make this a hwhole thing.</p>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col s12">
+                            <!--COMMENT FORM-->
+                            <div class="row">
+                                <form class="comment-form col s12">
+                                    <div class="input-field">
+                                        <textarea id="comment-content" class="materialize-textarea"></textarea>
+                                        <label for="post-content"></label>
+                                    </div>
+                                    <div class="col s12 left-align">
+                                        <button id="submit-comment" class=" btn  waves-effect waves-light"
+                                            type="submit">Post</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--END FORM-->
+                            <!-- COMMENT LIST -->
+                            <div class="row">
+                                <!--COMMENT CARD-->
+                                <div class="comment-card col s12 z-depth-2">
+                                    <p>Posted by: [User]</p>
+                                    <div class="section">
+                                        <p>Comment info goes here nice and easy yaknow?</p>
+                                    </div>
+                                </div>
+                                <!-- END COMMENT -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="dark blue darken-4">
+        <div class="row">
+            <div class="col s12">
+                <h5 class="white-text">Footer Content</h5>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        var options = {
+            inDuration: 300,
+            outDuration: 225,
+            constrainWidth: false, // Does not change width of dropdown to that of the activator
+            hover: true, // Activate on hover
+            gutter: 0, // Spacing from edge
+            belowOrigin: false, // Displays dropdown below the button
+            alignment: 'left', // Displays dropdown with edge aligned to the left of button
+            stopPropagation: false, // Stops event propagation
+        };
+        var instances = M.Dropdown.init(elems, options);
+    });
+</script>
+
+</html>

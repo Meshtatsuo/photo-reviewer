@@ -5,6 +5,10 @@ const {
     uploadFile
 } = require('../../util/img_upload');
 
+const upload = multer({
+    dest: 'uploads/'
+});
+
 const {
     Post,
     User,
@@ -52,12 +56,12 @@ router.get('/:id', (req, res) => {
                         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
                         include: {
                             model: User,
-                            attributes: ["username"],
+                            attributes: ["username", "isCreator"],
                         },
                     },
                     {
                         model: User,
-                        attributes: ["username"],
+                        attributes: ["username", "isCreator"],
                     },
                 ],
             }, )
@@ -66,10 +70,11 @@ router.get('/:id', (req, res) => {
                     plain: true
                 });
                 //display post page
-                res.render('post-view', {
+                res.render('viewPhoto', {
                     post,
                     loggedIn: req.session.loggedIn,
-                    username: req.session.username
+                    username: req.session.username,
+                    isCreator: req.session.isCreator
                 });
             })
             .catch((err) => {
@@ -83,7 +88,7 @@ router.get('/:id', (req, res) => {
 
 })
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
 
     if (req.session) {
         // only do things if user logged in
@@ -98,12 +103,13 @@ router.post('/', async (req, res) => {
 
         console.log("Saving post: ", image_key);
         Post.create({
+                title: req.body.title,
                 image_key: image_key,
                 alt_text: req.body.alt_text,
                 description: req.body.description,
                 isApproved: false,
                 client_id: req.body.client_id,
-                user_id: req.body.id // CHANGE TO REQ.SESSION AFTER TESTING
+                user_id: req.session.user_id // CHANGE TO REQ.SESSION AFTER TESTING
             })
             .then((dbPostData) => {
                 res.json(dbPostData);
@@ -117,6 +123,34 @@ router.post('/', async (req, res) => {
     } else {
         res.render('/login');
     }
+})
+
+router.put('/', (req, res) => {
+    if (req.session.isCreator) {
+        res.status(400);
+    } else {
+        Post.update({
+                isApproved: true
+            }, {
+                where: {
+                    id: req.body.post_id
+                }
+            })
+            .then((dbPostData) => {
+                if (!dbPostData) {
+                    res.status(404).json({
+                        message: "No post found with this id",
+                    });
+                    return;
+                }
+                res.json(dbPostData);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            })
+    }
+
 })
 
 module.exports = router;
