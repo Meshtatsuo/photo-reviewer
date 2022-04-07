@@ -17,22 +17,39 @@
   </head>
 
   <body>
-    <div class='wrapper'>
-      {{{body}}}
+<nav class='dark blue darken-4'>
+  <div class='nav-wrapper container'>
+    <a href='#' class='brand-logo'>PHOTO REVIEWER</a>
+
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-trigger right dark blue darken-4' href='#' data-target='dropdown1'>Username</a>
+
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+      <li><a href='#!'>Dashboard</a></li>
+      <!-- <li><a href="#!">two</a></li> -->
+      <li class='divider' tabindex='-1'></li>
+      <li><a href='#!'>Log Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class='wrapper'>
+ {{{body}}}
+</div>
+
+{{! JS related to logging out is only required if the user is logged in }}
+{{#if loggedIn}}
+  <script src='/js/logout.js'></script>
+{{/if}}
+
+<footer class='dark blue darken-4'>
+  <div class='row'>
+    <div class='col s12'>
+      <h5 class='white-text'>Footer Content</h5>
     </div>
-
-    {{! JS related to logging out is only required if the user is logged in }}
-    {{#if loggedIn}}
-      <script src='/js/logout.js'></script>
-    {{/if}}
-
-    <footer class='dark blue darken-4'>
-      <div class='row'>
-        <div class='col s12'>
-          <h5 class='white-text'>Footer Content</h5>
-        </div>
-      </div>
-    </footer>
+  </div>
+</footer>
 
   </body>
 

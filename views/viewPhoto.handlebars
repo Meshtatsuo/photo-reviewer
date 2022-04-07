@@ -1,0 +1,52 @@
+<main>
+    <div class="container">
+        <h4>{{post.title}}</h4>
+        <div class="row">
+            <div class="col s12 m6">
+                <!--Photo Section-->
+                <img class="responsive-img" src="{{post.image_key}}" alt="{{post.alt_text}}" />
+            </div>
+            <!-- Photo info and comments -->
+            <div class="row valign-wrapper">
+                <p>Posted by: {{post.creator.username}}</p>
+            </div>
+            <div class="col s6 valign-wrapper">
+                <button id="button-approval" class="btn waves-effect waves-light">Approve ✔</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <p>{{post.description}}</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!--COMMENT FORM-->
+        <div class="row">
+            <form class="comment-form col s12">
+                <div class="input-field">
+                    <textarea id="comment-content" class="materialize-textarea"></textarea>
+                    <label for="post-content"></label>
+                </div>
+                <div class="col s12 left-align">
+                    <button id="submit-comment" class=" btn  waves-effect waves-light"
+                        type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <!-- Comments -->
+                <ol class="comment-list">
+                    {{#each post.comments as |comment|}}
+                        {{> comment comment}}
+                    {{/each}}
+                </ol>
+            </div>
+        </div>
+        
+    </div>    
+</main>
