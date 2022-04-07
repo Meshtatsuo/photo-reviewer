@@ -6,7 +6,7 @@
     <title>Photo Reviewer</title>
 
     <!-- css file -->
-    <link rel='stylesheet' href='/public/css/style.css' />
+    <link rel='stylesheet' href='/css/style.css' />
 
     <!-- MATERIALIZE - Compiled and minified CSS -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css' />
@@ -19,17 +19,17 @@
   <body>
 <nav class='dark blue darken-4'>
   <div class='nav-wrapper container'>
-    <a href='#' class='brand-logo'>PHOTO REVIEWER</a>
+    <a href='/' class='brand-logo'>PHOTO REVIEWER</a>
 
     <!-- Dropdown Trigger -->
-    <a class='dropdown-trigger right dark blue darken-4' href='#' data-target='dropdown1'>Username</a>
+    <a class='dropdown-trigger right dark blue darken-4' href='#' data-target='dropdown1'>{{username}}</a>
 
     <!-- Dropdown Structure -->
     <ul id='dropdown1' class='dropdown-content'>
       <li><a href='#!'>Dashboard</a></li>
       <!-- <li><a href="#!">two</a></li> -->
       <li class='divider' tabindex='-1'></li>
-      <li><a href='#!'>Log Out</a></li>
+      <li><a href='#' class="logout-btn">Log Out</a></li>
     </ul>
   </div>
 </nav>
@@ -38,10 +38,9 @@
  {{{body}}}
 </div>
 
-{{! JS related to logging out is only required if the user is logged in }}
-{{#if loggedIn}}
+
   <script src='/js/logout.js'></script>
-{{/if}}
+
 
 <footer class='dark blue darken-4'>
   <div class='row'>
@@ -53,8 +52,6 @@
 
   </body>
 
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js'></script>
-  <script src='./javascript/get-images.js'></script>
-  <script src='./javascript/dropdown.js'></script>
+ <script src='/js/dropdown.js'></script>
 
 </html>
