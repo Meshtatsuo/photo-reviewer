@@ -17,6 +17,10 @@ main {
   flex: 1 0 auto;
 }
 
+.post-card {
+  margin: 4%;
+}
+
 .comment-card {
   margin: 2%;
 }

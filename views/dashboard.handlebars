@@ -6,7 +6,26 @@
             </div>
         </div>
 
-                <div class="col s6">
+
+
+        <div class="row">
+
+
+
+            
+            <div class="col s12 m6">
+                <div class="row">
+                    <div class="col s12">
+                        {{#each posts as |post|}}
+                            {{> post post}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col s12 m6">
             <form class="login-form">
 
                 <h3 class="center dark blue darken-4 white-text">ADD CLIENT</h3>
@@ -34,16 +53,7 @@
           </form>
         </div>
 
-        <div class="row">
-            <div class="col s6">
-                <div class="row">
-                    <div class="col s12">
-                        {{#each posts as |post|}}
-                            {{> post post}}
-                        {{/each}}
-                    </div>
-                </div>
-            </div>
+
         </div>
 
 
