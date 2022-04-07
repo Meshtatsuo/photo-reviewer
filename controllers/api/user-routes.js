@@ -95,7 +95,6 @@ router.post('/login', (req, res) => {
             });
             return;
         } else {
-            console.log(dbUserData);
             const validPassword = dbUserData.checkPassword(req.body.password);
 
             if (!validPassword) {
@@ -105,6 +104,7 @@ router.post('/login', (req, res) => {
                 return;
             } else {
                 console.log(dbUserData.isCreator);
+                console.log(dbUserData.id);
                 req.session.save(() => {
                     req.session.user_id = dbUserData.id;
                     req.session.username = dbUserData.username;

@@ -8,10 +8,18 @@
             </div>
             <!-- Photo info and comments -->
             <div class="row valign-wrapper">
-                <p>Posted by: {{post.creator.username}}</p>
+                <h6>Posted by: {{post.user.username}}</h6>
             </div>
             <div class="col s6 valign-wrapper">
+                {{#if post.isApproved}}
+                <a class="btn-flat disabled green-text">Approved! ✔</a>
+                {{else}}
+                {{#if user.isCreator}}
+                <p>Awaiting approval...</p>
+                {{else}}
                 <button id="button-approval" class="btn waves-effect waves-light">Approve ✔</button>
+                {{/if}}
+                {{/if}}
             </div>
         </div>
 
@@ -50,3 +58,6 @@
         
     </div>    
 </main>
+
+<script src="/js/comment.js"></script>
+<script src="/js/approvePhoto.js"></script>

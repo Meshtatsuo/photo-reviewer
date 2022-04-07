@@ -21,12 +21,23 @@ main {
   margin: 2%;
 }
 
+.btn-margin {
+  margin: 2%;
+}
+
 select {
   display: block;
 }
 
 img {
   padding: 1%;
+}
+
+.thumbnail {
+  max-height: 250px;
+  object-fit: none;
+
+
 }
 
 /* Remove text decoration from anchor tags */

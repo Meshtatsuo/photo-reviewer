@@ -56,12 +56,12 @@ router.get('/:id', (req, res) => {
                         attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
                         include: {
                             model: User,
-                            attributes: ["username"],
+                            attributes: ["username", "isCreator"],
                         },
                     },
                     {
                         model: User,
-                        attributes: ["username"],
+                        attributes: ["username", "isCreator"],
                     },
                 ],
             }, )
@@ -70,10 +70,11 @@ router.get('/:id', (req, res) => {
                     plain: true
                 });
                 //display post page
-                res.render('post-view', {
+                res.render('viewPhoto', {
                     post,
                     loggedIn: req.session.loggedIn,
-                    username: req.session.username
+                    username: req.session.username,
+                    isCreator: req.session.isCreator
                 });
             })
             .catch((err) => {
@@ -122,6 +123,34 @@ router.post('/', upload.single('image'), async (req, res) => {
     } else {
         res.render('/login');
     }
+})
+
+router.put('/', (req, res) => {
+    if (req.session.isCreator) {
+        res.status(400);
+    } else {
+        Post.update({
+                isApproved: true
+            }, {
+                where: {
+                    id: req.body.post_id
+                }
+            })
+            .then((dbPostData) => {
+                if (!dbPostData) {
+                    res.status(404).json({
+                        message: "No post found with this id",
+                    });
+                    return;
+                }
+                res.json(dbPostData);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json(err);
+            })
+    }
+
 })
 
 module.exports = router;

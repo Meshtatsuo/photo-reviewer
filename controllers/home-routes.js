@@ -32,11 +32,16 @@ router.get('/dashboard', (req, res) => {
     if (req.session.isCreator) {
         Post.findAll({
                 where: {
-                    user_id: req.session.id
+                    user_id: req.session.user_id
                 },
-                attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
+                attributes: ['id', 'title', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id'],
+                include: [{
+                    model: User,
+                    attributes: ['username']
+                }]
             })
             .then((dbPostData => {
+                console.log(dbPostData);
                 const posts = dbPostData.map(post => post.get({
                     plain: true
                 }))
@@ -51,11 +56,17 @@ router.get('/dashboard', (req, res) => {
     } else if (!req.session.isCreator) {
         Post.findAll({
                 where: {
-                    client_id: req.session.id
+                    client_id: req.session.user_id
                 },
-                attributes: ['id', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id']
+                attributes: ['id', 'title', 'image_key', 'alt_text', 'description', 'isApproved', 'client_id', 'user_id'],
+                include: [{
+                    model: User,
+                    attributes: ['username']
+                }]
+
             })
             .then((dbPostData => {
+                console.log(dbPostData);
                 const posts = dbPostData.map(post => post.get({
                     plain: true
                 }))
