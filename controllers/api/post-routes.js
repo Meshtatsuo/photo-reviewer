@@ -90,39 +90,35 @@ router.get('/:id', (req, res) => {
 
 router.post('/', upload.single('image'), async (req, res) => {
 
-    if (req.session) {
-        // only do things if user logged in
-        const {
-            filename,
-            path
-        } = req.file
 
-        await uploadFile(req.file);
+    // only do things if user logged in
+    const {
+        filename,
+        path
+    } = req.file
 
-        const image_key = `/api/images/${filename}`;
+    await uploadFile(req.file);
 
-        console.log("Saving post: ", image_key);
-        Post.create({
-                title: req.body.title,
-                image_key: image_key,
-                alt_text: req.body.alt_text,
-                description: req.body.description,
-                isApproved: false,
-                client_id: req.body.client_id,
-                user_id: req.session.user_id // CHANGE TO REQ.SESSION AFTER TESTING
-            })
-            .then((dbPostData) => {
-                res.json(dbPostData);
-            })
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            })
+    const image_key = `/api/images/${filename}`;
 
+    console.log("Saving post: ", image_key);
+    Post.create({
+            title: req.body.title,
+            image_key: image_key,
+            alt_text: req.body.alt_text,
+            description: req.body.description,
+            isApproved: false,
+            client_id: req.body.client_id,
+            user_id: req.session.user_id // CHANGE TO REQ.SESSION AFTER TESTING
+        })
+        .then((dbPostData) => {
+            res.json(dbPostData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        })
 
-    } else {
-        res.render('/login');
-    }
 })
 
 router.put('/', (req, res) => {
