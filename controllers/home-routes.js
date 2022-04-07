@@ -8,7 +8,6 @@ const {
 } = require('../models');
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/testUpload.html'));
     if (!req.session) {
         res.render('login');
     } else {

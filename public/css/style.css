@@ -13,9 +13,17 @@ body {
   height: 100%;
 }
 
-body > footer {
+body>footer {
   position: sticky;
   top: 100vh;
+}
+
+.comment-card {
+  margin: 2%;
+}
+
+img {
+  padding: 1%;
 }
 
 /* Remove text decoration from anchor tags */
