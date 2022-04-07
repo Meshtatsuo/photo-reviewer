@@ -78,14 +78,14 @@ router.get('/upload', (req, res) => {
     if (req.session) {
         User.findAll({
                 where: {
-                    creator_id: req.session.id
+                    creator_id: req.session.user_id
                 },
                 attributes: {
                     exclude: ['password']
                 }
             })
             .then((dbClientData => {
-                const clients = dbClientData.map(clients => user.get({
+                const clients = dbClientData.map(user => user.get({
                     plain: true
                 }))
                 res.render('upload', {

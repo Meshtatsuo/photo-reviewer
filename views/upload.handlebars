@@ -5,23 +5,49 @@
 
     <main>
       <div class="row">
-        <div class="input-field col s4 center-align">
+        <div class="col s6 offeset-s3">
           <form id="uploadImage">
+            <div class="row">
 
-            <div class="input-field">
-              <input class="col s12 z-depth-3 waves-effect waves-light btn" id="image-file" filename='image' type="file" accept="image/*"></input>
-              <input placeholder="Alt Text" type="text" id="alt_text" name="altText">
+              <div class="input-field col s12">
+                <!-- <label for="altText">Alt Text:</label> -->
+                <input class="col s12 z-depth-3 waves-effect waves-light btn" id="image-file" filename='image' type="file" accept="image/*"></input>
+              </div>
+
             </div>
-            
-            <!-- <label for="altText">Alt Text:</label> -->
-            <input placeholder="Description" type="text" id="description" name="description">
-            <input class="col s12 z-depth-3 waves-effect waves-light btn" type="submit">
-            <!-- <label for="description">Description: </label> -->
 
+            <div class="row">
+
+              <div class="input-field col s12">
+                <input placeholder="Title" id="title" type="text" class="validate">
+                <label for="title">Title: </label>
+              </div>
+
+              <div class="input-field col s12">
+                <input placeholder="Description" id="description" type="text" class="validate">
+                <label for="description">Description: </label>
+              </div>
+
+              <div class="input-field col s12">
+                <input id="alt_text" type="text" class="validate">
+                <label for="alt_text">Alt Text: </label>
+              </div>
+
+              <select id="select">
+                <option class="browser-default" value="{{client.id}}">{{client.username}}</option>
+                {{#each clients as |client|}}
+                  <option value="{{client.id}}">{{client.username}}</option>  
+                {{/each}}
+              </select>
+
+              <div>
+                <button id="upload-btn" class="col s12 z-depth-3 dark blue darken-4 btn-large" type="submit">Upload</button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
     </main>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
-<script src="/public/javascript/upload-file.js"></script>
+<script src="/js/upload-file.js"></script>

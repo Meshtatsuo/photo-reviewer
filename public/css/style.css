@@ -21,6 +21,10 @@ main {
   margin: 2%;
 }
 
+select {
+  display: block;
+}
+
 img {
   padding: 1%;
 }

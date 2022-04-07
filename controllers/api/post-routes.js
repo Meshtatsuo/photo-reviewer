@@ -5,6 +5,10 @@ const {
     uploadFile
 } = require('../../util/img_upload');
 
+const upload = multer({
+    dest: 'uploads/'
+});
+
 const {
     Post,
     User,
@@ -83,7 +87,7 @@ router.get('/:id', (req, res) => {
 
 })
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
 
     if (req.session) {
         // only do things if user logged in
@@ -98,12 +102,13 @@ router.post('/', async (req, res) => {
 
         console.log("Saving post: ", image_key);
         Post.create({
+                title: req.body.title,
                 image_key: image_key,
                 alt_text: req.body.alt_text,
                 description: req.body.description,
                 isApproved: false,
                 client_id: req.body.client_id,
-                user_id: req.body.id // CHANGE TO REQ.SESSION AFTER TESTING
+                user_id: req.session.user_id // CHANGE TO REQ.SESSION AFTER TESTING
             })
             .then((dbPostData) => {
                 res.json(dbPostData);
