@@ -1,5 +1,81 @@
 {{#if isCreator}}
-{{> creatorDashboard user}}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 center-align btn-margin">
+                <a href="/upload" class="col s4 offset-s4 z-depth-3 dark blue darken-4 btn-large">Upload</a>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+
+
+
+            
+            <div class="col s12 m6">
+                <div class="row">
+                    <div class="col s12">
+                        {{#each posts as |post|}}
+                            {{> post post}}
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col s12 m6">
+            <form class="login-form">
+
+                <h3 class="center dark blue darken-4 white-text">ADD CLIENT</h3>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="client-username">Username: </label>
+                        <input type="text" id="username" />
+                    </div>
+                    <div class="input-field col s6">
+                        <label for="client-email">Email: </label>
+                        <input type="email" id="email" />
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="client-password">Password: </label>
+                        <input type="password" id="password" />
+                    </div>
+                    
+                    <button id="create-button" class="col s12 z-depth-3 dark blue darken-4 btn-large">Create</button>
+                </div>
+
+          </form>
+        </div>
+
+
+        </div>
+
+
+
+
+
+    </div>
 {{else}}
-{{> clientDashboard user}}
+    <div class="container">
+      <div class="row">
+        <div class="col s12"><h4>Dashboard</h4></div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 m6">
+          <!-- Posts here -->
+          {{#each posts as |post|}}
+            {{> post post}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
 {{/if}}
+
+    <script src="/js/createClient.js"></script>

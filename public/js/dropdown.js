@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var options = {
     inDuration: 300,
     outDuration: 225,
+    coverTrigger: false,
     constrainWidth: false, // Does not change width of dropdown to that of the activator
     hover: false, // Activate on hover
     gutter: 0, // Spacing from edge
