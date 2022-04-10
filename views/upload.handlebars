@@ -1,53 +1,57 @@
 <div class="container">
-  <h2>Upload Photo</h2>
+  <div class="row">
+    <div class='col s4'></div>
+    <h3 class='col s4 center dark blue darken-4 white-text' style='font-size: 2vw; padding: 10px'>Upload Photo</h3>
+  </div>
 </div>
-    
+
 
 <main>
   <div class="row">
     <div class="col s12 center-align">
       <div class="col s6 offset-s3">
         <form id="uploadImage">
-          <div class="row">                
+          <div class="row"></div>
+          <div class="input-field col s12">
+            <!-- <label for="altText">Alt Text:</label> -->
+            <input class="col s12 z-depth-3 waves-effect waves-light dark blue darken-4 white-text btn-large" id="image-file"
+              filename='image' type="file" accept="image/*"></input>
+          </div>
+
+          <div class="row">
+
+            <div class="input-field col s12">
+              <input placeholder="Title" id="title" type="text" class="validate">
+              <label for="title">Title: </label>
             </div>
-              <div class="input-field col s12">
-                <!-- <label for="altText">Alt Text:</label> -->
-                <input class="col s12 z-depth-3 waves-effect waves-light dark blue darken-4 white-text btn" id="image-file" filename='image' type="file" accept="image/*"></input>
-              </div>
-              
-              <div class="row">
 
-                <div class="input-field col s12">
-                  <input placeholder="Title" id="title" type="text" class="validate">
-                  <label for="title">Title: </label>
-                </div>
+            <div class="input-field col s12">
+              <input placeholder="Description" id="description" type="text" class="validate">
+              <label for="description">Description: </label>
+            </div>
 
-                <div class="input-field col s12">
-                  <input placeholder="Description" id="description" type="text" class="validate">
-                  <label for="description">Description: </label>
-                </div>
+            <div class="input-field col s12">
+              <input id="alt_text" type="text" class="validate">
+              <label for="alt_text">Alt Text: </label>
+            </div>
 
-                <div class="input-field col s12">
-                  <input id="alt_text" type="text" class="validate">
-                  <label for="alt_text">Alt Text: </label>
-                </div>
+            <select id="select">
+              <option class="browser-default" value="{{client.id}}">{{client.username}}</option>
+              {{#each clients as |client|}}
+              <option value="{{client.id}}">{{client.username}}</option>
+              {{/each}}
+            </select>
 
-                <select id="select">
-                  <option class="browser-default" value="{{client.id}}">{{client.username}}</option>
-                  {{#each clients as |client|}}
-                    <option value="{{client.id}}">{{client.username}}</option>  
-                  {{/each}}
-                </select>
-
-                <div>
-                  <button id="upload-btn" class="col s12 z-depth-3 dark blue darken-4 btn-large" type="submit">Upload</button>
-                </div>
-              </div>
+            <div>
+              <button id="upload-btn" class="col s12 z-depth-3 dark blue darken-4 btn-large" style='font-size: 2vw'
+                type="submit">Upload</button>
             </div>
           </div>
-        </form>
       </div>
     </div>
+    </form>
+  </div>
+  </div>
   </div>
 </main>
 
